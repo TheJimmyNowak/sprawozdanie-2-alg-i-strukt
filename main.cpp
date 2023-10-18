@@ -24,11 +24,23 @@ void printAll(int *arr, int n, int pos) {
   }
 }
 
+void printAllTrue(bool *arr, int n) {
+  cout << "Klucze na pozycjach:" << endl;
+  for (int i = 0; i < n; i++) {
+    if (arr[i])
+      cout << "Pozycja: " << i + 1 << endl;
+  }
+}
+
 int main() {
   int *D, n, key, i, pos;
+  bool *L;
   cout << "Podaj rozmiar tablicy: " << endl;
   cin >> n;
+
   D = new int[n + 1];
+  L = new bool[n + 1];
+
   cout << "Podaj elementy tablicy: " << endl;
   for (i = 0; i < n; i++) {
     cin >> D[i];
@@ -39,13 +51,12 @@ int main() {
   pos = -1;
   for (int i = 0; i <= n; i++) {
     if (D[i] == key) {
-      pos = i + 1;
-      break;
+      if (i != n)
+        L[i] = true;
     }
   }
 
-  cout << "Klucz na pozycji: " << pos << endl;
-  printAll(D, n, pos);
+  printAllTrue(L, n);
   delete[] D;
   return 0;
 }
