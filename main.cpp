@@ -1,60 +1,29 @@
 #include <cstdlib>
-#include <ctime>
 #include <iostream>
-
 using namespace std;
 
-int search(int Z[], int n, int key) {
-  int i;
-  for (i = 0; i <= n; i++)
-    if (Z[i] == key)
-      break;
-  if (i == n)
-    return -1;
-  else
-    return i + 1;
-}
-
-void printAll(int *arr, int n, int pos) {
-  for (int i = 0; i < n; i++) {
-    if (i - 1 == pos)
-      cout << "*" << arr[i] << endl;
-    else
-      cout << arr[i] << endl;
-  }
-}
-
-void printAllTrue(bool *arr, int n) {
-  cout << "Klucze na pozycjach:" << endl;
-  for (int i = 0; i < n; i++) {
-    if (arr[i])
-      cout << "Pozycja: " << i + 1 << endl;
-  }
-}
+#define N 20
 
 int main() {
-  int *D, n, key, i, pos, frequency;
-  frequency = 0;
-  cout << "Podaj rozmiar tablicy: " << endl;
-  cin >> n;
+  int Z[N];
+  int i, maxZ, p = -1;
 
-  D = new int[n + 1];
+  // Define array
+  srand(time(NULL));
+  for (i = 0; i < N; i++)
+    Z[i] = rand() % 1000;
 
-  cout << "Podaj elementy tablicy: " << endl;
-  for (i = 0; i < n; i++) {
-    cin >> D[i];
-  }
-  cout << "Podaj klucz: ";
-  cin >> key;
-  D[n] = key;
-  pos = -1;
-  for (int i = n / 2; i < n; i++) {
-    if (D[i] == key) {
-      cout << "Pozycja " << i + 1 << endl;
-      break;
+  maxZ = 0;
+  for (i = 1; i < N; i++) {
+    if (Z[i] > maxZ) {
+      maxZ = Z[i];
+      p = i;
     }
   }
-
-  delete[] D;
+  for (i = 0; i < N; i++) {
+    cout << Z[i] << endl;
+  }
+  cout << "Max= " << maxZ << endl;
+  cout << "Szukany element jest na pozycji: " << p << endl << endl;
   return 0;
 }
