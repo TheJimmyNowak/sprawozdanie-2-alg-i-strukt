@@ -33,13 +33,12 @@ void printAllTrue(bool *arr, int n) {
 }
 
 int main() {
-  int *D, n, key, i, pos;
-  bool *L;
+  int *D, n, key, i, pos, frequency;
+  frequency = 0;
   cout << "Podaj rozmiar tablicy: " << endl;
   cin >> n;
 
   D = new int[n + 1];
-  L = new bool[n + 1];
 
   cout << "Podaj elementy tablicy: " << endl;
   for (i = 0; i < n; i++) {
@@ -52,11 +51,11 @@ int main() {
   for (int i = 0; i <= n; i++) {
     if (D[i] == key) {
       if (i != n)
-        L[i] = true;
+        frequency++;
     }
   }
 
-  printAllTrue(L, n);
+  cout << "Klucz wystąpił: " << frequency << " razy" << endl;
   delete[] D;
   return 0;
 }
