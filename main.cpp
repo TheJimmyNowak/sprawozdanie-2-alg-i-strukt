@@ -15,8 +15,17 @@ int search(int Z[], int n, int key) {
     return i + 1;
 }
 
+void printAll(int *arr, int n, int pos) {
+  for (int i = 0; i < n; i++) {
+    if (i - 1 == pos)
+      cout << "*" << arr[i] << endl;
+    else
+      cout << arr[i] << endl;
+  }
+}
+
 int main() {
-  int *D, n, key, i, p;
+  int *D, n, key, i, pos;
   cout << "Podaj rozmiar tablicy: " << endl;
   cin >> n;
   D = new int[n + 1];
@@ -27,15 +36,16 @@ int main() {
   cout << "Podaj klucz: ";
   cin >> key;
   D[n] = key;
-  p = -1;
+  pos = -1;
   for (int i = 0; i <= n; i++) {
     if (D[i] == key) {
-      p = i + 1;
+      pos = i + 1;
       break;
     }
   }
-  p = search(D, n, key);
-  cout << "Szukany element jest na pozycji: " << p << endl << endl;
+
+  cout << "Klucz na pozycji: " << pos << endl;
+  printAll(D, n, pos);
   delete[] D;
   return 0;
 }
