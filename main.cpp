@@ -48,14 +48,13 @@ int main() {
   cin >> key;
   D[n] = key;
   pos = -1;
-  for (int i = 0; i <= n; i++) {
+  for (int i = 0; i < n / 2; i++) {
     if (D[i] == key) {
-      if (i != n)
-        frequency++;
+      cout << "Pozycja " << i + 1 << endl;
+      break;
     }
   }
 
-  cout << "Klucz wystąpił: " << frequency << " razy" << endl;
   delete[] D;
   return 0;
 }
