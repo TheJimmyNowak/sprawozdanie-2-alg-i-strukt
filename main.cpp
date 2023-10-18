@@ -19,12 +19,14 @@ int main() {
       maxZ = Z[i];
     }
   }
+
+  int frequency = 0;
   for (i = 0; i < N; i++) {
     cout << Z[i] << endl;
     if (Z[i] == maxZ)
-      p = i;
+      frequency++;
   }
   cout << "Max= " << maxZ << endl;
-  cout << "Szukany element jest na pozycji: " << p << endl << endl;
+  cout << "Częstość= " << frequency << endl;
   return 0;
 }
