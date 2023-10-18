@@ -17,11 +17,12 @@ int main() {
   for (i = 1; i < N; i++) {
     if (Z[i] > maxZ) {
       maxZ = Z[i];
-      p = i;
     }
   }
   for (i = 0; i < N; i++) {
     cout << Z[i] << endl;
+    if (Z[i] == maxZ)
+      p = i;
   }
   cout << "Max= " << maxZ << endl;
   cout << "Szukany element jest na pozycji: " << p << endl << endl;
